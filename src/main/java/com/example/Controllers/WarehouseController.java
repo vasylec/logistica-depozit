@@ -6,31 +6,29 @@ import java.util.ResourceBundle;
 import com.example.Database.DatabaseConnection;
 import com.example.Model.Warehouse;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class DatabaseWarehouseController implements Initializable {
+public class WarehouseController implements Initializable {
 
     @FXML
     TableView<Warehouse> tableView;
 
     @FXML
-    TableColumn<Warehouse, String> numeTableColumn;
+    TableColumn<Warehouse, String> nameTableColumn;
     @FXML
-    TableColumn<Warehouse, String> locatieTableColumn;
+    TableColumn<Warehouse, String> locationTableColumn;
     @FXML
-    TableColumn<Warehouse, Integer> capacitateTableColumn;
+    TableColumn<Warehouse, Integer> capacityTableColumn;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        numeTableColumn.setCellValueFactory(new PropertyValueFactory<>("nume"));
-        locatieTableColumn.setCellValueFactory(new PropertyValueFactory<>("locatie"));
-        capacitateTableColumn.setCellValueFactory(new PropertyValueFactory<>("capacitate"));
+        nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        locationTableColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        capacityTableColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
         tableView.setItems(DatabaseConnection.warehouseTable);
     }

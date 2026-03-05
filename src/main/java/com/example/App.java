@@ -24,7 +24,7 @@ public class App extends Application {
     @SuppressWarnings("exports")
     public void start(Stage stage) throws IOException {
 
-        DatabaseConnection.warehouseTable = DatabaseConnection.selectFromWarehouse();
+        DatabaseConnection.init();
 
         scene = new Scene(loadFXML("login"), 640, 480);
         stage.setMinHeight(400);

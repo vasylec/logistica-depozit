@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.example.Model.Inventory;
+import com.example.Model.Receipt;
+import com.example.Model.Supplier;
 import com.example.Model.Warehouse;
 
 import javafx.beans.Observable;
@@ -32,8 +35,18 @@ public class DatabaseConnection {
     // ────────────────────────────────────────────────────────────────────────────
 
     public static ObservableList<Warehouse> warehouseTable;
+    public static ObservableList<Inventory> inventoryTable;
+    public static ObservableList<Supplier> supplierTable;
+    public static ObservableList<Receipt> receiptTable;
 
     // ────────────────────────────────────────────────────────────────────────────
+
+    public static void init(){
+        warehouseTable = selectWarehouses();
+        inventoryTable = selectInventories();
+        supplierTable = selectSuppliers();
+        receiptTable = selectReceipts();
+    }
 
     public static Connection getConnection() throws SQLException {
         if (conn != null && !conn.isClosed()) {
@@ -43,29 +56,6 @@ public class DatabaseConnection {
         conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
         conn.setAutoCommit(false); // use explicit transactions where needed
         return conn;
-    }
-
-    public static ObservableList<Warehouse> selectFromWarehouse() {
-        String sql = "SELECT * FROM warehouse";
-        ObservableList<Warehouse> list = FXCollections.observableArrayList();
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery();) {
-
-            while (rs.next()) {
-                list.add(new Warehouse(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("location"),
-                        rs.getInt("capacity")));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        return list;
     }
 
     public static void close(Connection conn) {
@@ -78,105 +68,87 @@ public class DatabaseConnection {
         }
     }
 
-    public static boolean insertProduct(String name, String description, double unitPrice, double volume) {
-        String sql = "INSERT INTO product (name, description, unit_price, volume) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, name);
-            stmt.setString(2, description);
-            stmt.setDouble(3, unitPrice);
-            stmt.setDouble(4, volume);
-            return stmt.executeUpdate() > 0;
+    public static ObservableList<Warehouse> selectWarehouses() {
+        String sql = "SELECT * FROM warehouse";
+        ObservableList<Warehouse> list = FXCollections.observableArrayList();
+        try {
+            Connection conn2 = getConnection();
+            PreparedStatement stmt = conn2.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Warehouse(rs.getInt("id"),
+                                       rs.getString("name"),
+                                       rs.getString("location"),
+                                       rs.getInt("capacity")));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
+        return list;
     }
 
-    public static boolean insertSupplier(String name, String description, String contact, String address) {
-        String sql = "INSERT INTO supplier (name, description, contact, address) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, name);
-            stmt.setString(2, description);
-            stmt.setString(3, contact);
-            stmt.setString(4, address);
-            return stmt.executeUpdate() > 0;
+    public static ObservableList<Inventory> selectInventories() {
+        String sql = "SELECT * FROM inventory";
+        ObservableList<Inventory> list = FXCollections.observableArrayList();
+        try {
+            Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Inventory(rs.getInt("id"),
+                        rs.getInt("warehouseId"),
+                        rs.getInt("productId"),
+                        rs.getInt("quantity"),
+                        rs.getTimestamp("quantity")));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
+        return list;
     }
 
-    public static boolean insertInventory(int warehouseId, int productId, int quantity) {
-        String sql = "INSERT INTO inventory (warehouse_id, product_id, quantity) VALUES (?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, warehouseId);
-            stmt.setInt(2, productId);
-            stmt.setInt(3, quantity);
-            return stmt.executeUpdate() > 0;
+    public static ObservableList<Receipt> selectReceipts() {
+        String sql = "SELECT * FROM receipt";
+        ObservableList<Receipt> list = FXCollections.observableArrayList();
+        try {
+            Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Receipt(rs.getInt("id"),
+                        rs.getInt("supplierId"),
+                        rs.getInt("warehouseId"),
+                        rs.getTimestamp("receiptDate"),
+                        rs.getString("documentNumber"),
+                        rs.getString("notes")));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
+        return list;
     }
 
-    public static boolean insertReceipt(int supplierId, int warehouseId, String documentNumber, String notes) {
-        String sql = "INSERT INTO receipt (supplier_id, warehouse_id, document_number, notes) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, supplierId);
-            stmt.setInt(2, warehouseId);
-            stmt.setString(3, documentNumber);
-            stmt.setString(4, notes);
-            return stmt.executeUpdate() > 0;
+    public static ObservableList<Supplier> selectSuppliers() {
+        String sql = "SELECT * FROM supplier";
+        ObservableList<Supplier> list = FXCollections.observableArrayList();
+        try {
+            Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                list.add(new Supplier(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("contact"),
+                        rs.getString("address")));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
-    }
-
-    public static boolean insertReceiptItem(int receiptId, int productId, int quantity, double unitPrice) {
-        String sql = "INSERT INTO receipt_item (receipt_id, product_id, quantity, unit_price) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, receiptId);
-            stmt.setInt(2, productId);
-            stmt.setInt(3, quantity);
-            stmt.setDouble(4, unitPrice);
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static boolean insertStockMovement(int fromWarehouseId, int toWarehouseId, String reference) {
-        String sql = "INSERT INTO stock_movement (from_warehouse_id, to_warehouse_id, reference) VALUES (?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, fromWarehouseId);
-            stmt.setInt(2, toWarehouseId);
-            stmt.setString(3, reference);
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static boolean insertStockMovementItem(int stockMovementId, int productId, int quantity) {
-        String sql = "INSERT INTO stock_movement_item (stock_movement_id, product_id, quantity) VALUES (?, ?, ?)";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, stockMovementId);
-            stmt.setInt(2, productId);
-            stmt.setInt(3, quantity);
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return list;
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.ReceiptController">
+    <children>
+        <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="supplierIdTableColumn" prefWidth="126.0" text="Supplier Id" />
+                <TableColumn fx:id="warehouseIdTableColumn" prefWidth="157.0" text="Depozit Id" />
+                <TableColumn fx:id="receiptDateTableColumn" prefWidth="157.0" text="Ziua receptionarii" />
+                <TableColumn fx:id="documentNumberTableColumn" prefWidth="157.0" text="Numarul documentului" />
+                <TableColumn fx:id="notesTableColumn" prefWidth="157.0" text="Notite" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

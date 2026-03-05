@@ -2,40 +2,29 @@ package com.example.Model;
 
 public class Warehouse {
     private int id;
-    private String nume;
-    private String locatie;
-    private int capacitate;
+    private String name;
+    private String location;
+    private int capacity;
 
-    public Warehouse(int id, String nume, String locatie, int capacitate) {
+    public Warehouse(int id, String name, String location, int capacity) {
         this.id = id;
-        this.nume = nume;
-        this.locatie = locatie;
-        this.capacitate = capacitate;
+        this.name = name;
+        this.location = location;
+        this.capacity = capacity;
     }
 
-    public Warehouse(String nume, String locatie, int capacitate) {
-        this.nume = nume;
-        this.locatie = locatie;
-        this.capacitate = capacitate;
+    public Warehouse(String name, String location, int capacity) {
+        this.name = name;
+        this.location = location;
+        this.capacity = capacity;
     }
 
-    public int getCapacitate() {
-        return capacitate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getLocatie() {
-        return locatie;
-    }
-
-    public String getNume() {
-        return nume;
-    }
-
-    public void setCapacitate(int capacitate) {
-        this.capacitate = capacitate;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+    public int getCapacity() { return capacity; }
+    public void setCapacity(int capacity) { this.capacity = capacity; }
 }

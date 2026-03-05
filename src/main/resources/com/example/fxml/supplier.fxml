@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.SupplierController">
+    <children>
+        <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="nameTableColumn" prefWidth="126.0" text="Nume Furnizor" />
+                <TableColumn fx:id="descriptionTableColumn" prefWidth="157.0" text="Descriere" />
+                <TableColumn fx:id="contactTableColumn" prefWidth="157.0" text="Contact" />
+                <TableColumn fx:id="addressTableColumn" prefWidth="157.0" text="Adresa" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

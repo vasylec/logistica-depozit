@@ -17,27 +17,28 @@ import javafx.scene.layout.BorderPane;
 
 public class MainController implements Initializable {
 
-    @FXML
-    MenuItem depozitMenuItem;
-
-    @FXML
-    BorderPane root;
+    @FXML MenuItem receiptMenuItem;
+    @FXML MenuItem warehouseMenuItem;
+    @FXML MenuItem supplierMenuItem;
+    @FXML MenuItem inventoryMenuItem;
+    @FXML BorderPane root;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         setMethodsToAllObjects();
-
     }
 
     private void setMethodsToAllObjects() {
-        depozitMenuItem.setOnAction(eventHander_depozitMenuItem());
+        warehouseMenuItem.setOnAction(eventHanderMenuItem("warehouse"));
+        supplierMenuItem.setOnAction(eventHanderMenuItem("supplier"));
+        inventoryMenuItem.setOnAction(eventHanderMenuItem("inventory"));
+        receiptMenuItem.setOnAction(eventHanderMenuItem("receipt"));
     }
 
-    private EventHandler<ActionEvent> eventHander_depozitMenuItem() {
+    private EventHandler<ActionEvent> eventHanderMenuItem(String fxmlFileName) {
         return event -> {
             try {
-
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + "database" + ".fxml"));
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
                 Node view = loader.load();
                 root.setCenter(view);
 
