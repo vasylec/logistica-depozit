@@ -2,11 +2,17 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
-  <columns>
-    <TableColumn prefWidth="126.0" text="Nume Depozit" />
-    <TableColumn prefWidth="157.0" text="Locatie" />
-      <TableColumn prefWidth="157.0" text="Capacitate" />
-  </columns>
-</TableView>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.DatabaseWarehouseController">
+   <children>
+      <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="numeTableColumn" prefWidth="126.0" text="Nume Depozit" />
+            <TableColumn fx:id="locatieTableColumn" prefWidth="157.0" text="Locatie" />
+            <TableColumn fx:id="capacitateTableColumn" prefWidth="157.0" text="Capacitate" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

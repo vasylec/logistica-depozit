@@ -1,23 +1,34 @@
 package com.example;
 
 import javafx.application.Application;
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import com.example.Database.DatabaseConnection;
+import com.example.Model.Warehouse;
 
 public class App extends Application {
 
     private static Scene scene;
-
     static Long warehouseID;
 
     @Override
     @SuppressWarnings("exports")
     public void start(Stage stage) throws IOException {
+
+        DatabaseConnection.warehouseTable = DatabaseConnection.selectFromWarehouse();
+
         scene = new Scene(loadFXML("login"), 640, 480);
+        stage.setMinHeight(400);
+        stage.setMinWidth(600);
         stage.setScene(scene);
         stage.show();
     }

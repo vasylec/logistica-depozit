@@ -43,6 +43,7 @@ public class ReportExporterApp extends Application {
     // ── JavaFX lifecycle ─────────────────────────────────────────────────────────
 
     @Override
+    @SuppressWarnings("exports")
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Jasper PDF Exporter – PostgreSQL");
 
