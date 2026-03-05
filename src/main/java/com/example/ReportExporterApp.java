@@ -24,7 +24,7 @@ import java.util.Map;
 public class ReportExporterApp extends Application {
 
     private static final String DEFAULT_REPORT_PATH =
-            "src/main/resources/reports/your_report.jrxml";
+            "src/main/resources/reports/report_example.jrxml";
 
     private final JasperReportService reportService = new JasperReportService();
 
