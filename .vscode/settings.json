@@ -1,5 +1,6 @@
 {
   "prettier.documentSelectors": [
   "!**/*.sql"
-]
+],
+"java.configuration.updateBuildConfiguration": "interactive"
 }
