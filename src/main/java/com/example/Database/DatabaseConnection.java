@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import com.example.Model.Warehouse;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

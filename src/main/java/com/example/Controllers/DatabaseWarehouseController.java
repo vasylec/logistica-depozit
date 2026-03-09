@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 import com.example.Database.DatabaseConnection;
 import com.example.Model.Warehouse;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;

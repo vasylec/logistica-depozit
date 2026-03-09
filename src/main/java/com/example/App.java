@@ -1,19 +1,14 @@
 package com.example;
 
 import javafx.application.Application;
-import javafx.beans.Observable;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import com.example.Database.DatabaseConnection;
-import com.example.Model.Warehouse;
 
 public class App extends Application {
 
