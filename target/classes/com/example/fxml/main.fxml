@@ -11,10 +11,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="Baza de date">
             <items>
-              <MenuItem fx:id="depozitMenuItem" mnemonicParsing="false" text="Depozite" />
-                  <MenuItem mnemonicParsing="false" text="Furnizori" />
-                  <MenuItem mnemonicParsing="false" text="Inventar" />
-                  <MenuItem mnemonicParsing="false" text="Receptii" />
+              <MenuItem fx:id="warehouseMenuItem" mnemonicParsing="false" text="Depozite" />
+              <MenuItem fx:id="supplierMenuItem" mnemonicParsing="false" text="Furnizori" />
+              <MenuItem fx:id="inventoryMenuItem" mnemonicParsing="false" text="Inventar" />
+              <MenuItem fx:id="receiptMenuItem" mnemonicParsing="false" text="Receptii" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Transfer">
