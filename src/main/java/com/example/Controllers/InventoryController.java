@@ -16,11 +16,16 @@ import java.util.ResourceBundle;
 
 public class InventoryController implements Initializable {
 
-    @FXML TableView<Inventory> tableView;
-    @FXML TableColumn<Inventory, Integer> warehouseIdTableColumn;
-    @FXML TableColumn<Inventory, Integer> productIdTableColumn;
-    @FXML TableColumn<Inventory, Integer> quantityTableColumn;
-    @FXML TableColumn<Inventory, Timestamp> lastUpdatedTableColumn;
+    @FXML
+    TableView<Inventory> tableView;
+    @FXML
+    TableColumn<Inventory, Integer> warehouseIdTableColumn;
+    @FXML
+    TableColumn<Inventory, Integer> productIdTableColumn;
+    @FXML
+    TableColumn<Inventory, Integer> quantityTableColumn;
+    @FXML
+    TableColumn<Inventory, Timestamp> lastUpdatedTableColumn;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -28,6 +33,7 @@ public class InventoryController implements Initializable {
         productIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));
         quantityTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         lastUpdatedTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdated"));
+
         tableView.setItems(DatabaseConnection.inventoryTable);
     }
 }

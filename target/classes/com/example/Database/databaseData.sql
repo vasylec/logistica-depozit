@@ -56,7 +56,7 @@ INSERT INTO
     product (
         name,
         description,
-        unit_price,
+        unitPrice,
         volume
     )
 VALUES (
@@ -362,9 +362,9 @@ VALUES (
 
 INSERT INTO
     receipt (
-        supplier_id,
-        warehouse_id,
-        document_number,
+        supplierId,
+        warehouseId,
+        documentNumber,
         notes
     )
 VALUES (
@@ -399,11 +399,11 @@ VALUES (
     );
 
 INSERT INTO
-    receipt_item (
-        receipt_id,
-        product_id,
+    receiptItem (
+        receiptId,
+        productId,
         quantity,
-        unit_price
+        unitPrice
     )
 VALUES (1, 1, 20, 2200.00),
     (1, 2, 15, 2500.00),
@@ -417,11 +417,11 @@ VALUES (1, 1, 20, 2200.00),
     (1, 10, 60, 400.00);
 
 INSERT INTO
-    receipt_item (
-        receipt_id,
-        product_id,
+    receiptItem (
+        receiptId,
+        productId,
         quantity,
-        unit_price
+        unitPrice
     )
 VALUES (2, 11, 18, 1700.00),
     (2, 12, 22, 1800.00),
@@ -435,11 +435,11 @@ VALUES (2, 11, 18, 1700.00),
     (2, 20, 55, 1100.00);
 
 INSERT INTO
-    receipt_item (
-        receipt_id,
-        product_id,
+    receiptItem (
+        receiptId,
+        productId,
         quantity,
-        unit_price
+        unitPrice
     )
 VALUES (3, 21, 15, 1500.00),
     (3, 22, 20, 1450.00),
@@ -453,11 +453,11 @@ VALUES (3, 21, 15, 1500.00),
     (3, 30, 50, 3400.00);
 
 INSERT INTO
-    receipt_item (
-        receipt_id,
-        product_id,
+    receiptItem (
+        receiptId,
+        productId,
         quantity,
-        unit_price
+        unitPrice
     )
 VALUES (4, 31, 25, 1600.00),
     (4, 32, 30, 3500.00),
@@ -471,11 +471,11 @@ VALUES (4, 31, 25, 1600.00),
     (4, 40, 60, 1700.00);
 
 INSERT INTO
-    receipt_item (
-        receipt_id,
-        product_id,
+    receiptItem (
+        receiptId,
+        productId,
         quantity,
-        unit_price
+        unitPrice
     )
 VALUES (5, 41, 20, 2800.00),
     (5, 42, 25, 3000.00),
@@ -489,18 +489,18 @@ VALUES (5, 41, 20, 2800.00),
     (5, 50, 45, 2000.00);
 
 INSERT INTO
-    stock_movement (
-        from_warehouse_id,
-        to_warehouse_id,
+    stockMovement (
+        fromWarehouseId,
+        toWarehouseId,
         reference
     )
 VALUES (1, 2, 'MOV-2024-001'),
     (3, 4, 'MOV-2024-002');
 
 INSERT INTO
-    stock_movement_item (
-        stock_movement_id,
-        product_id,
+    stockMovementItem (
+        stockMovementId,
+        productId,
         quantity
     )
 VALUES (1, 1, 10),
@@ -515,9 +515,9 @@ VALUES (1, 1, 10),
     (1, 10, 28);
 
 INSERT INTO
-    stock_movement_item (
-        stock_movement_id,
-        product_id,
+    stockMovementItem (
+        stockMovementId,
+        productId,
         quantity
     )
 VALUES (2, 11, 14),

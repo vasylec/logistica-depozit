@@ -19,20 +19,26 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Transfer">
             <items>
-              <MenuItem mnemonicParsing="false" text="Intocmeste transfer" />
-                  <MenuItem mnemonicParsing="false" text="Solicita transfer" />
+              <MenuItem fx:id="sendTransfer" mnemonicParsing="false" text="Intocmeste transfer" />
+                  <MenuItem fx:id="getTransfer" mnemonicParsing="false" text="Primeste tranfer" />
+                  <MenuItem fx:id="getTransferHistory" mnemonicParsing="false" text="Istorie transfer" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Receptie">
             <items>
-              <MenuItem mnemonicParsing="false" text="Intocmeste receptie" />
-                  <MenuItem mnemonicParsing="false" text="Solicita receptie" />
+              <MenuItem fx:id="regReception" mnemonicParsing="false" text="Intocmeste receptie" />
+                  <MenuItem fx:id="historyReception" mnemonicParsing="false" text="Istorie receptie" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Rapoarte">
                <items>
                   <MenuItem mnemonicParsing="false" text="Receptii" />
                   <MenuItem mnemonicParsing="false" text="Inventar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Account">
+               <items>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Log out" />
                </items>
             </Menu>
         </menus>
