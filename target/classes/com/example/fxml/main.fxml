@@ -11,28 +11,34 @@
         <menus>
           <Menu mnemonicParsing="false" text="Baza de date">
             <items>
-              <MenuItem fx:id="depozitMenuItem" mnemonicParsing="false" text="Depozite" />
-                  <MenuItem mnemonicParsing="false" text="Furnizori" />
-                  <MenuItem mnemonicParsing="false" text="Inventar" />
-                  <MenuItem mnemonicParsing="false" text="Receptii" />
+              <MenuItem fx:id="warehouseMenuItem" mnemonicParsing="false" text="Depozite" />
+              <MenuItem fx:id="supplierMenuItem" mnemonicParsing="false" text="Furnizori" />
+              <MenuItem fx:id="inventoryMenuItem" mnemonicParsing="false" text="Inventar" />
+              <MenuItem fx:id="receiptMenuItem" mnemonicParsing="false" text="Receptii" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Transfer">
             <items>
-              <MenuItem mnemonicParsing="false" text="Intocmeste transfer" />
-                  <MenuItem mnemonicParsing="false" text="Solicita transfer" />
+              <MenuItem fx:id="sendTransfer" mnemonicParsing="false" text="Intocmeste transfer" />
+                  <MenuItem fx:id="getTransfer" mnemonicParsing="false" text="Primeste tranfer" />
+                  <MenuItem fx:id="getTransferHistory" mnemonicParsing="false" text="Istorie transfer" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Receptie">
             <items>
-              <MenuItem mnemonicParsing="false" text="Intocmeste receptie" />
-                  <MenuItem mnemonicParsing="false" text="Solicita receptie" />
+              <MenuItem fx:id="regReception" mnemonicParsing="false" text="Intocmeste receptie" />
+                  <MenuItem fx:id="historyReception" mnemonicParsing="false" text="Istorie receptie" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Rapoarte">
                <items>
                   <MenuItem mnemonicParsing="false" text="Receptii" />
                   <MenuItem mnemonicParsing="false" text="Inventar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Account">
+               <items>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" text="Log out" />
                </items>
             </Menu>
         </menus>

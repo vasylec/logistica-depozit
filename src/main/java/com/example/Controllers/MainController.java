@@ -18,7 +18,26 @@ import javafx.scene.layout.BorderPane;
 public class MainController implements Initializable {
 
     @FXML
-    MenuItem depozitMenuItem;
+    MenuItem logout;
+
+    @FXML
+    MenuItem receiptMenuItem;
+    @FXML
+    MenuItem warehouseMenuItem;
+    @FXML
+    MenuItem supplierMenuItem;
+    @FXML
+    MenuItem inventoryMenuItem;
+    @FXML
+    MenuItem sendTransfer;
+    @FXML
+    MenuItem getTransfer;
+    @FXML
+    MenuItem regReception;
+    @FXML
+    MenuItem getTransferHistory;
+    @FXML
+    MenuItem historyReception;
 
     @FXML
     BorderPane root;
@@ -26,18 +45,118 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         setMethodsToAllObjects();
-
     }
 
     private void setMethodsToAllObjects() {
-        depozitMenuItem.setOnAction(eventHander_depozitMenuItem());
+
+        warehouseMenuItem.setOnAction(eventHanderMenuItem("warehouse"));
+        supplierMenuItem.setOnAction(eventHanderMenuItem("supplier"));
+        inventoryMenuItem.setOnAction(eventHanderMenuItem("inventory"));
+        receiptMenuItem.setOnAction(eventHanderMenuItem("receipt"));
+        sendTransfer.setOnAction(eventHanderMenuItem("sendTransfer"));
+
+        regReception.setOnAction(eventHanderMenuItem_regReception("regReceptie"));
+        getTransfer.setOnAction(eventHanderMenuItem_regGetTransfer("regReceptie"));
+        getTransferHistory.setOnAction(eventHanderMenuItem_regGetTransferHistory("regReceptie"));
+        historyReception.setOnAction(eventHanderMenuItem_regGetReceptionHistory("regReceptie"));
+
+        logout.setOnAction(logout());
+
     }
 
-    private EventHandler<ActionEvent> eventHander_depozitMenuItem() {
+    private EventHandler<ActionEvent> logout() {
         return event -> {
             try {
+                App.reception_tranfer = "";
+                App.warehouseID = null;
+                App.errorMessage = null;
 
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + "database" + ".fxml"));
+                App.setRoot("login");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem_regGetReceptionHistory(String fxmlFileName) {
+        return event -> {
+            try {
+                App.reception_tranfer = "get receipt history";
+
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
+                Node view = loader.load();
+                root.setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem_regGetTransferHistory(String fxmlFileName) {
+        return event -> {
+            try {
+                App.reception_tranfer = "get transfer history";
+
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
+                Node view = loader.load();
+                root.setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem_regGetTransfer(String fxmlFileName) {
+        return event -> {
+            try {
+                App.reception_tranfer = "get transfer";
+
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
+                Node view = loader.load();
+                root.setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem_regSendTransfer(String fxmlFileName) {
+        return event -> {
+            try {
+                App.reception_tranfer = "send transfer";
+
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
+                Node view = loader.load();
+                root.setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem_regReception(String fxmlFileName) {
+        return event -> {
+            try {
+                App.reception_tranfer = "reception";
+
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
+                Node view = loader.load();
+                root.setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+    }
+
+    private EventHandler<ActionEvent> eventHanderMenuItem(String fxmlFileName) {
+        return event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlFileName + ".fxml"));
                 Node view = loader.load();
                 root.setCenter(view);
 
