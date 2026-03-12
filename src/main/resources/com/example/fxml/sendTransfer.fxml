@@ -4,32 +4,31 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.SendTransferController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ChoiceBox layoutX="214.0" layoutY="92.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="127.0" layoutY="141.0" prefWidth="150.0" />
-            <Spinner layoutX="301.0" layoutY="141.0" />
-            <ChoiceBox layoutX="127.0" layoutY="182.0" prefWidth="150.0" />
-            <Spinner layoutX="301.0" layoutY="182.0" />
-            <ChoiceBox layoutX="127.0" layoutY="225.0" prefWidth="150.0" />
-            <Spinner layoutX="301.0" layoutY="225.0" />
-            <ChoiceBox layoutX="127.0" layoutY="266.0" prefWidth="150.0" />
-            <Spinner layoutX="301.0" layoutY="266.0" />
-            <ChoiceBox layoutX="127.0" layoutY="306.0" prefWidth="150.0" />
-            <Spinner layoutX="301.0" layoutY="306.0" />
-            <Button layoutX="255.0" layoutY="350.0" mnemonicParsing="false" text="Transmite" />
-            <Label layoutX="174.0" layoutY="32.0" text="Intocmeste transfer">
+            <ChoiceBox fx:id="warehouseChoiceBox" layoutX="215.0" layoutY="179.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="productChoiceBox" layoutX="125.0" layoutY="222.0" prefWidth="150.0" />
+            <Spinner fx:id="quantitySpinner" layoutX="299.0" layoutY="222.0" />
+            <Button layoutX="265.0" layoutY="346.0" mnemonicParsing="false" onAction="#sendTransfer" text="Transmite" />
+            <Label layoutX="174.0" layoutY="66.0" text="Intocmeste transfer">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
+            <Button layoutX="308.0" layoutY="289.0" mnemonicParsing="false" onAction="#showProducts" text="Afiseaza lista" />
+            <Label layoutX="94.0" layoutY="183.0" text="Selectează depozitul" />
+            <Label layoutY="226.0" text="Selectează produsele" />
+            <TextField fx:id="referenceTextField" layoutX="216.0" layoutY="123.0" />
+            <Label layoutX="48.0" layoutY="127.0" text="Referința (numele transferului)" />
+            <Button layoutX="186.0" layoutY="289.0" mnemonicParsing="false" onAction="#addProduct" text="Adaugă produs" />
+            <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="323.0" prefHeight="17.0" prefWidth="592.0" text="Label" />
          </children>
       </Pane>
    </children>

@@ -1,6 +1,35 @@
 {
+  // Excludem fișierele SQL din Prettier
   "prettier.documentSelectors": [
-  "!**/*.sql"
-],
-"java.configuration.updateBuildConfiguration": "interactive"
+    "!**/*.sql"
+  ],
+
+  // Controlăm cum se face update la configurația de build (Maven/Gradle)
+  "java.configuration.updateBuildConfiguration": "interactive",
+
+  // Pornim Language Server-ul Java în modul complet (nu lightweight)
+  "java.server.launchMode": "Standard",
+
+  // Alocăm mai multă memorie și optimizăm GC pentru Language Server
+  "java.jdt.ls.vmargs": "-Xmx2G -XX:+UseG1GC -XX:+UseStringDeduplication",
+
+  // Reducem verificările inutile pentru excluderi
+  "java.configuration.checkProjectSettingsExclusions": false,
+
+  // Activăm IntelliSense mai agresiv
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // Activăm sugestii la tastare
+  "editor.suggestOnTriggerCharacters": true,
+
+  // Reducem delay-ul la IntelliSense
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+  // Controlăm formatările automate
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
 }

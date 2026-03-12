@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import com.example.App;
 import com.example.Model.Inventory;
+import com.example.Model.Product;
 import com.example.Model.Receipt;
 import com.example.Model.ReceiptProduct;
 import com.example.Model.Supplier;
@@ -52,6 +53,10 @@ public class DatabaseConnection {
     public static List<MenuItem> transferGetMenuList;
     public static List<MenuItem> transferGetHistoryMenuList;
 
+    // ────────────────────────────────────────────────────────────────────────────
+
+    public static ObservableList<Product> inventoryProducts;
+
     public static void initConnect() throws SQLException {
         getConnection();
     }
@@ -66,6 +71,8 @@ public class DatabaseConnection {
         transferSentMenuList = selectSentTransfer();
         transferGetMenuList = selectGetTransfer();
         transferGetHistoryMenuList = selectGetTransferHistory();
+
+        inventoryProducts = loadProductsInventory(App.warehouseID);
     }
 
     public static Connection getConnection() throws SQLException {
@@ -563,4 +570,30 @@ public class DatabaseConnection {
             stmt2.executeUpdate();
         }
     }
+
+    public static ObservableList<Product> loadProductsInventory(Long warehouseId) throws SQLException {
+        String sql = "SELECT productid, name, description, unitprice, volume, quantity FROM inventory " +
+                "INNER JOIN product ON productid = product.id WHERE warehouseid = ?";
+
+        Connection conn = getConnection();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        pstm.setLong(1, warehouseId);
+        ResultSet rs = pstm.executeQuery();
+
+        ObservableList<Product> list = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+            list.add(new Product(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getDouble(4),
+                    rs.getDouble(5),
+                    rs.getInt(6)));
+        }
+
+        return list;
+    }
+
 }
