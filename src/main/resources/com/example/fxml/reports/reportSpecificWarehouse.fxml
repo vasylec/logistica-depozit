@@ -26,7 +26,7 @@
 
             <HBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="Depozit:" minWidth="120"/>
-                <ComboBox fx:id="warehouseCi" promptText="Selecteaza depozit..." HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <ComboBox fx:id="warehouseCombo" promptText="Selecteaza depozit..." HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
             </HBox>
 
             <!-- Export button + spinner + status all in one row -->
