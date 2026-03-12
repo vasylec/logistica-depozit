@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.Controllers.Reports.ReportSpecificReceiptController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <VBox fx:id="root" spacing="10" prefWidth="640" prefHeight="450">
+            <padding>
+                <Insets top="16" right="16" bottom="16" left="16"/>
+            </padding>
+
+            <!-- Output path row -->
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Output PDF path:" minWidth="120"/>
+                <TextField fx:id="outputField" HBox.hgrow="ALWAYS"/>
+                <Button text="Browse…" onAction="#browseOutput"/>
+            </HBox>
+
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Receptie:" minWidth="120"/>
+                <ComboBox fx:id="receiptsCombo" promptText="Selecteaza receiptia..." HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+
+            <!-- Export button + spinner + status all in one row -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="exportButton"
+                        text="Export PDF"
+                        defaultButton="true"
+                        onAction="#runExport"
+                        style="-fx-font-size:13; -fx-padding:6 18;"/>
+                <ProgressIndicator fx:id="spinner" prefWidth="24" prefHeight="24" visible="false"/>
+                <Label fx:id="statusLabel" text="Ready." wrapText="false"
+                       maxWidth="350" textOverrun="ELLIPSIS" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- PDF preview takes all remaining space -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                        style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc;">
+                <VBox fx:id="pdfPagesBox" spacing="6" alignment="TOP_CENTER">
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </children>
+</AnchorPane>

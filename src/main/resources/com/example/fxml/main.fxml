@@ -32,8 +32,9 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Rapoarte">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Receptii" />
-                  <MenuItem mnemonicParsing="false" text="Inventar" />
+                  <MenuItem fx:id="reportWarehouses" mnemonicParsing="false" text="Depozite" />
+                  <MenuItem fx:id="reportSpecificWarehouse" mnemonicParsing="false" text="Depozit specific" />
+                   <MenuItem fx:id="reportSpecificReceipt" mnemonicParsing="false" text="Receptie specifica" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Account">

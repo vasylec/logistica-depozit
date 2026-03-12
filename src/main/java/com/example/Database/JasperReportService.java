@@ -1,4 +1,4 @@
-package com.example.Reports;
+package com.example.Database;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.pdf.JRPdfExporter;
@@ -10,8 +10,6 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
-
-import com.example.Database.DatabaseConnection;
 
 /**
  * Service that compiles a .jrxml template, fills it with data from a remote
@@ -32,7 +30,7 @@ public class JasperReportService {
      * @throws JRException if JasperReports encounters an error
      * @throws Exception   for any other failure (DB, IO, …)
      */
-    public void exportToPdf(String jrxmlPath,
+    public static void exportToPdf(String jrxmlPath,
             String outputPdfPath,
             Map<String, Object> reportParams) throws Exception {
 
@@ -75,7 +73,7 @@ public class JasperReportService {
     }
 
     // ── Convenience overload – no extra parameters ──────────────────────────────
-    public void exportToPdf(String jrxmlPath, String outputPdfPath) throws Exception {
+    public static void exportToPdf(String jrxmlPath, String outputPdfPath) throws Exception {
         exportToPdf(jrxmlPath, outputPdfPath, null);
     }
 }
